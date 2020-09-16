@@ -20,7 +20,7 @@
               </el-input>
             </el-form-item>
             <el-form-item>
-              <el-button class="login-btn" type="primary" @click="login">立即登录</el-button>
+              <el-button class="login-btn" type="primary" @click="submit">立即登录</el-button>
             </el-form-item>
           </el-form>
         </div>
@@ -30,21 +30,35 @@
 </template>
 
 <script>
+import { mapActions } from "vuex"
 export default {
-  data() {
-    return {
-      forminfo: {
-        username: "",
-        password: "",
-      },
-    };
-  },
-  created() {},
-  methods: {
-    login() {},
-  },
-  components: {},
-};
+    data(){
+        return{
+           forminfo:{
+             username:"aaabbb",
+             password:"aaabbb"
+           },
+           rules:{
+              username:[{required:true,message:"必填！",trigger:'blur'}],
+              password:[{required:true,message:"必填！",trigger:'blur'}],
+           }
+        }
+    },
+    created(){},
+    methods:{
+       ...mapActions({
+         login:"user/login"
+       }),
+       submit(){
+         this.$refs.form.validate(valid=>{
+           if(valid){
+              this.login(this.forminfo)
+           }
+         })
+       }
+    },
+    components:{}
+}
 </script>
 
 <style  scoped>
