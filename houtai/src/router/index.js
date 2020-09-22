@@ -16,12 +16,14 @@ let router =  new Router({
   routes: [
     // {
     //   path: '/',
-    //   name: 'HelloWorld',
-    //   component: HelloWorld
-    // }
+    //   component: () => import("@/pages/login")
+    // },
     {
       path: "/login",
       name: "login",
+      meta: {
+        title: "欢迎使用abcd后台管理系统"
+      },
       component: () => import("@/pages/login")
     },
     {
@@ -32,6 +34,9 @@ let router =  new Router({
         {
           path:'/',
           name:'index',
+          meta: {
+            title: "后台首页"
+          },
           component:()=>import('@/components/index')
         },
         {

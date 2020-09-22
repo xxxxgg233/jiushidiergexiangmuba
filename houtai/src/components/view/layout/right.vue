@@ -23,6 +23,8 @@ export default {
 <style  scoped=''>
 .right {
   width: 100%;
+  overflow: hidden;
+  overflow-y: scroll;
 }
 
 </style>

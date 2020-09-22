@@ -1,9 +1,9 @@
-// 获取菜单列表！
+
 import { getCategory } from "@/request/category"
 export default {
     namespaced:true,
     state: {
-        categorylist:[]  // 菜单列表
+        categorylist:[]  
     },
     getters: {
         categorylist: state => state.categorylist
@@ -14,7 +14,6 @@ export default {
         }
     },
     actions: {
-        // 请求菜单列表的数据！
         async get_category_list({commit}){
             let res = await getCategory();  
             commit('SET_LIST',res)

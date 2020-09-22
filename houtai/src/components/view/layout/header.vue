@@ -12,27 +12,45 @@
      <div>
         <el-dropdown>
           <span class="el-dropdown-link">
-            武哥你好！<i class="el-icon-arrow-down el-icon--right"></i>
+            {{username}}你好！<i class="el-icon-arrow-down el-icon--right"></i>
           </span>
           <el-dropdown-menu slot="dropdown">
-            <el-dropdown-item> <i class="el-icon-full-screen"></i> 全屏操作</el-dropdown-item>
-            <el-dropdown-item> <i class="el-icon-switch-button"></i> 退出登录</el-dropdown-item>
+            <el-dropdown-item @click.native="togglescreenfull"> <i class="el-icon-full-screen"></i> {{isfull ? '退出全屏':'全屏操作'}}</el-dropdown-item>
+            <el-dropdown-item @click.native="QUIT"> <i class="el-icon-switch-button"></i> 退出登录</el-dropdown-item>
           </el-dropdown-menu>
         </el-dropdown>
      </div>
   </div>
 </template>
 <script>
-import { mapState,mapMutations } from "vuex"
+import { mapState,mapMutations,mapGetters } from "vuex"
+// 全屏插件
+import screenfull from 'screenfull'
 export default {
     data(){
-        return{  }
+        return{
+          isfull:false
+        }
     },
     computed: {
-       ...mapState(['iscollapse'])
+       ...mapState(['iscollapse']),
+       ...mapGetters({
+         username:"user/username"
+       })
     },
     methods:{
-      ...mapMutations(['TOGGLE'])
+      ...mapMutations({
+        TOGGLE:"TOGGLE",
+        QUIT:"user/QUIT"
+      }),
+      togglescreenfull(){
+        if (!screenfull.isEnabled) {
+          this.$message.warning('您的浏览器不支持全屏')
+          return false
+        }
+        this.isfull = !this.isfull
+        screenfull.toggle()
+      }
     },
     components:{}
 }
@@ -43,6 +61,7 @@ export default {
   height: 100%;
   justify-content: space-between;
   align-items: center;
+ 
 }
 .header .lt{
   display: flex;

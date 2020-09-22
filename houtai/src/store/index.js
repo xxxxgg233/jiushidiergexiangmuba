@@ -9,6 +9,7 @@ import role from "./modules/role";
 import user from "./modules/user";
 import category from "./modules/category";
 import specs from "./modules/specs";
+import goods from "./modules/goods";
 
 let store = new Vuex.Store({
   state: {
@@ -24,7 +25,8 @@ let store = new Vuex.Store({
     role,
     user,
     category,
-    specs
+    specs,
+    goods,
   }
 });
 

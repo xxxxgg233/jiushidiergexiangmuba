@@ -53,7 +53,7 @@
 import { addCategory, editCategory } from "@/request/category";
 import { mapGetters, mapActions } from "vuex";
 let defaultItem = {
-  pid: 1,
+  pid: 0,
   catename: "",
   img: "",
   status: 1, // 状态1正常2禁用

@@ -9,8 +9,8 @@
         <el-header class="page-header">
           <Header></Header>
         </el-header>
-        <el-container>
-          <el-main class="page-main">
+        <el-container class="page-main">
+          <el-main >
             <Right></Right>
           </el-main>
         </el-container>
@@ -44,21 +44,6 @@ export default {
 </script>
 
 <style scoped>
-/* .wrap {
-  display: flex;
-  width: 100vw;
-  height: 100vh;
-}
-.left {
-  width: 300px;
-  background: lightblue;
-  height: 100vh;
-}
-.right {
-  flex: 1;
-  height: 100vh;
-  background: lightslategrey;
-} */
 .page {
   width: 100vw;
   height: 100vh;
@@ -70,6 +55,10 @@ export default {
 .page-content {
   height: 100%;
   background-color: #f7f7f7;
+  overflow-y: auto;
+}
+.page-main {
+  overflow-y: auto;
 }
 .page-header {
   background-color: #fff;
